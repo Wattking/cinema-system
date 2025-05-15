@@ -9,11 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: '20'  # 指定Node.js 20版本
+          cache: 'npm'        # 启用npm缓存
+          
       - run: npm install
+      
       - run: npm run build
+        env:
+          NODE_OPTIONS: '--openssl-legacy-provider'  # 解决crypto问题
+          
       - uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
