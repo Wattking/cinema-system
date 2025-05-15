@@ -41,7 +41,7 @@ const useCinemaStore = defineStore("cinema", () => {
     //functions包装的就是actions(同步异步均可)
     const getCinemaList = async (cityId) => {
         var res = await axios({
-            url: `/api?cityId=${cityId}&ticketFlag=1&k=121376`,
+            url: `https://m.maizuo.com/gateway?cityId=${cityId}&ticketFlag=1&k=121376`,
             headers: {
                 'x-client-info':
                     '{"a":"3000","ch":"1002","v":"5.2.1","e":"1745164089463465625944065","bc":"110100"}',
