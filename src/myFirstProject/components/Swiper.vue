@@ -23,7 +23,7 @@ const datalist = ref([]);
 let swiperInstance = null;
 
 onMounted(() => {
-  datalist.value = ['符传诚', '和', '冯香莲', '要', '一直', '一直', '在一起', '♥'];
+  datalist.value = ['轮播1', '轮播2', '轮播3', '轮播4', '轮播5', '轮播6', '轮播7', '轮播8'];
   
   // 确保DOM更新完成后再初始化Swiper
   nextTick(() => {
