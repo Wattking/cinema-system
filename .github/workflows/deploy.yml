@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: write  # 添加这行确保有写入权限
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -13,16 +16,17 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # 指定Node.js 20版本
-          cache: 'npm'        # 启用npm缓存
+          node-version: '20'
           
       - run: npm install
       
       - run: npm run build
         env:
-          NODE_OPTIONS: '--openssl-legacy-provider'  # 解决crypto问题
+          NODE_OPTIONS: '--openssl-legacy-provider'
           
-      - uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
+          force_orphan: true  # 确保每次都是全新部署
