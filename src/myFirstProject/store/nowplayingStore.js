@@ -11,7 +11,7 @@ const useNowplayingStore = defineStore("nowplaying", () => {
     //functions包装的就是actions(同步异步均可)
     const getNowplayingList = async () => {
         var res = await axios({
-            url: `/api?cityId=110100&pageNum=${pageNum.value}&pageSize=10&type=1&k=1920833`,
+            url: `https://m.maizuo.com/gateway?cityId=110100&pageNum=${pageNum.value}&pageSize=10&type=1&k=1920833`,
             headers: {
                 'x-client-info':
                     '{"a":"3000","ch":"1002","v":"5.2.1","e":"1745164089463465625944065","bc":"110100"}',
