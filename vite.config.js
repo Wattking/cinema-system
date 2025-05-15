@@ -3,7 +3,7 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   plugins: [vue()],
-  base: '/', // 生产环境基础路径
+  base: '/cinema-system/',
   server: {
     proxy: {
       '/api': {
